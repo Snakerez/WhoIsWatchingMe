@@ -24,8 +24,10 @@ public class Configuration : IPluginConfiguration
     public float SoundVolume { get; set; } = 0.5f;
     public string SoundFilePath { get; set; } = OriginalSoundFile;
     public bool StartOnStartup { get; set; } = false;
+    public bool ShowRedCircles { get; set; } = false;
     public bool TellOption { get; set; } = true;
     public bool DoteOption { get; set; } = true;
+    public bool PetOption { get; set; } = true;
     public bool AdventurePlateOption { get; set; } = true;
     public bool ExamineOption { get; set; } = true;
     public bool NoNoNo { get; set; } = false;

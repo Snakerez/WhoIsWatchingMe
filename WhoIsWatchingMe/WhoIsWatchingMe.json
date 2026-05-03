@@ -1,25 +1,21 @@
 {
-    "Author": "ThaMimi",
-    "Name": "Who Is Watching ME",
-    "Punchline": "Hello there.",
-    "Description": "Amodified and better version of peeping tom",
-    "Tags": [
-        "Who is watching me",
-        "Tha mimi"
-    ],
-    "InternalName": "WhoIsWatchingMe",
-    "AssemblyVersion": "1.5.0.0",
-    "TestingAssemblyVersion": "1.1.0.0",
-    "RepoUrl": "https://github.com/lnjanos/peepingtim",
-    "ApplicableVersion": "any",
-    "DalamudApiLevel": 15,
-    "TestingDalamudApiLevel": 13,
-    "IsHide": "False",
-    "IsTestingExclusive": "False",
-    "DownloadCount": 1,
-    "LastUpdate": 1733436251,
-    "DownloadLinkInstall": "https://github.com/lnjanos/peepingtim/releases/download/release/1.5.0.0.zip",
-    "DownloadLinkUpdate": "https://github.com/lnjanos/peepingtim/releases/download/release/1.5.0.0.zip",
-    "DownloadLinkTesting": "https://github.com/lnjanos/peepingtim/releases/download/testing/testing.zip",
-    "IconUrl": "https://raw.githubusercontent.com/lnjanos/peepingtim/refs/heads/master/SamplePlugin/assets/pipipopo.png"
+  "Author": "ThaMimi",
+  "Name": "Who Is Watching ME",
+  "InternalName": "WhoIsWatchingMe",
+  "AssemblyVersion": "1.5.0.0",
+  "Description": "Amodified and better version of peeping tom",
+  "ApplicableVersion": "any",
+  "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
+  "Tags": [
+    "Who is watching me",
+    "Tha mimi"
+  ],
+  "DalamudApiLevel": 15,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "LoadPriority": 0,
+  "IconUrl": "https://raw.githubusercontent.com/lnjanos/peepingtim/refs/heads/master/SamplePlugin/assets/pipipopo.png",
+  "Punchline": "Hello there.",
+  "AcceptsFeedback": true
 }

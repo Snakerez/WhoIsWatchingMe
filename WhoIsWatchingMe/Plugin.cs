@@ -1,42 +1,45 @@
-using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Bindings.ImGui;
+using Dalamud.Interface;
 using Dalamud.Game;
 using Dalamud.Game.ClientState;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.SubKinds;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Command;
+using Dalamud.Game.Gui.ContextMenu;
+using Dalamud.Game.Text;
+using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using System.Collections.Generic;
-using System;
-using WhoIsWatchingMe.Windows;
-using Dalamud.Bindings.ImGui;
-using System.Linq;
-using Dalamud.Game.Text.SeStringHandling;
-using Lumina.Excel.Sheets;
-using System.Diagnostics;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using FFXIVClientStructs.FFXIV.Client.UI;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.Text;
-using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using Dalamud.Utility;
 using ECommons;
 using ECommons.Automation;
-using ECommons.GameFunctions;
-using NAudio.Wave;
-using System.Threading;
-using ECommons.Logging;
-using System.IO;
-using FFXIVClientStructs.FFXIV.Client.Sound;
-using ECommons.EzEventManager;
-using FFXIVClientStructs.FFXIV.Common.Lua;
-using FFXIVClientStructs.FFXIV.Client.UI.Info;
-using ECommons.DalamudServices;
-using System.Threading.Tasks;
-using Dalamud.Game.Gui.ContextMenu;
-using Dalamud.Utility;
 using ECommons.ChatMethods;
+using ECommons.DalamudServices;
+using ECommons.EzEventManager;
+using ECommons.GameFunctions;
+using ECommons.ImGuiMethods;
+using ECommons.Logging;
+using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using FFXIVClientStructs.FFXIV.Client.Sound;
+using FFXIVClientStructs.FFXIV.Client.UI;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+using FFXIVClientStructs.FFXIV.Client.UI.Info;
+using FFXIVClientStructs.FFXIV.Common.Lua;
+using Lumina.Excel.Sheets;
+using NAudio.Wave;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
+using WhoIsWatchingMe.Windows;
 
 namespace WhoIsWatchingMe
 {
@@ -53,6 +56,7 @@ namespace WhoIsWatchingMe
         [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
         [PluginService] internal static IContextMenu ContextMenu { get; private set; } = null!;
         [PluginService] internal static ICondition Condition { get; private set; } = null!;
+        [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
 
         private const string CommandName1 = "/wiwm";
         private const string CommandName2 = "/who";
@@ -96,6 +100,9 @@ namespace WhoIsWatchingMe
         private bool firstDrawn = false;
         private bool dutyWindowSuppressed = false;
 
+        //for drawing dot below player
+        private List<Vector2> indicatorPositions = new();
+
         public Plugin()
         {
             Configuration = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
@@ -125,8 +132,11 @@ namespace WhoIsWatchingMe
             });
 
             PluginInterface.UiBuilder.Draw += DrawUI;
+            PluginInterface.UiBuilder.Draw += DrawWorldIndicators;
             PluginInterface.UiBuilder.OpenConfigUi += DrawConfig;
             PluginInterface.UiBuilder.OpenMainUi += DrawMain;
+
+
 
             if (Configuration.StartOnStartup)
             {
@@ -257,6 +267,7 @@ namespace WhoIsWatchingMe
             PluginInterface.UiBuilder.Draw -= DrawUI;
             PluginInterface.UiBuilder.OpenConfigUi -= DrawConfig;
             PluginInterface.UiBuilder.OpenMainUi -= DrawMain;
+            PluginInterface.UiBuilder.Draw -= DrawWorldIndicators;
 
             Framework.Update -= OnUpdate;
         }
@@ -424,6 +435,7 @@ namespace WhoIsWatchingMe
             if (currentTick - lastUpdateTick < UpdateIntervalMs)
                 return;
             lastUpdateTick = currentTick;
+            indicatorPositions.Clear();
 
             // AllViewer-Loading Check (alle 1,5 Sek)
             if (currentTick - lastLoadingTick >= LoadingIntervalMs)
@@ -495,6 +507,16 @@ namespace WhoIsWatchingMe
                     // 1) Schauen, ob mich dieser Character (LocalPlayer) anvisiert
                     if (character.TargetObjectId == localPlayerId && character.GameObjectId != localPlayerId)
                     {
+                        if (Configuration.ShowRedCircles)
+                        {
+                            // We add 2.0f to Y so the circle appears above their head instead of in their feet
+                            if (GameGui.WorldToScreen(character.Position, out var screenPos))
+                            {
+                                indicatorPositions.Add(screenPos);
+                            }
+                        }
+                        // --------------------------------
+
                         string charKey = GetPlayerKey(character);
                         currentlyLookingAtMe.Add(charKey);
 
@@ -693,6 +715,25 @@ namespace WhoIsWatchingMe
                 Svc.Framework.RunOnTick(() =>
                 {
                     Chat.SendMessage("/dote");
+                });
+            }
+        }
+
+        public void PetViewer(ViewerInfo viewer)
+        {
+            if (viewer == null) return;
+
+            IPlayerCharacter? x = ObjectTable.SearchById(viewer.lastKnownGameObjectId) as IPlayerCharacter;
+
+            if (x == null) return;
+
+            if (viewer.isLoaded && x.IsTargetable)
+            {
+                TargetManager.Target = x;
+                Task.Delay(1000);
+                Svc.Framework.RunOnTick(() =>
+                {
+                    Chat.SendMessage("/pet");
                 });
             }
         }
@@ -910,7 +951,31 @@ namespace WhoIsWatchingMe
                 lastKnownGameObjectId = 123,
             };
         }
+        private void DrawWorldIndicators()
+        {
+            if (this.Configuration == null || !this.Configuration.ShowRedCircles)
+                return;
 
+            var drawList = ImGui.GetBackgroundDrawList();
+
+            foreach (var obj in ObjectTable)
+            {
+                // Use the full path for IPlayerCharacter to be safe
+                if (obj is Dalamud.Game.ClientState.Objects.SubKinds.IPlayerCharacter pc)
+                {
+                    // We check if the target's ID matches the ID of the current player
+                    // This bypasses the need for the '.LocalPlayer' property on IClientState
+                    if (pc.TargetObject != null && pc.TargetObject.GameObjectId == ObjectTable.LocalPlayer?.GameObjectId)
+                    {
+                        if (GameGui.WorldToScreen(pc.Position, out var screenPos))
+                        {
+                            uint red = ImGui.ColorConvertFloat4ToU32(new System.Numerics.Vector4(1.0f, 0.0f, 0.0f, 0.8f));
+                            drawList.AddCircleFilled(screenPos, 6.0f, red);
+                        }
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

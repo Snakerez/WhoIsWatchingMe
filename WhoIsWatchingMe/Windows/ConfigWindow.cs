@@ -87,7 +87,21 @@ namespace WhoIsWatchingMe.Windows
                     ImGui.Separator();
                     ImGui.Spacing();
 
+                    var showRedCircles = Configuration.ShowRedCircles;
+                    if (ImGui.Checkbox("Show red circles above watchers", ref showRedCircles))
+                    {
+                        Configuration.ShowRedCircles = showRedCircles;
+                        Configuration.Save();
+                    }
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.SetTooltip("Displays a red indicator above the heads of players who are targeting you.");
+                    }
+                    ImGui.Spacing();
+                    // --------------------------------------
+
                     var startupstart = Configuration.StartOnStartup;
+
                     if (ImGui.Checkbox("Start plugin on game startup", ref startupstart))
                     {
                         Configuration.StartOnStartup = startupstart;
@@ -130,6 +144,13 @@ namespace WhoIsWatchingMe.Windows
                     if (ImGui.Checkbox("Dote", ref doteOption))
                     {
                         Configuration.DoteOption = doteOption;
+                        Configuration.Save();
+                    }
+
+                    var petOption = Configuration.PetOption;
+                    if (ImGui.Checkbox("Pet", ref petOption))
+                    {
+                        Configuration.PetOption = petOption;
                         Configuration.Save();
                     }
 

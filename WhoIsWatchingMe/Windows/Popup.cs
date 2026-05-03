@@ -43,6 +43,14 @@ namespace WhoIsWatchingMe.Windows
                     }
                 }
 
+                if (Plugin.Configuration.PetOption && viewer.isLoaded)
+                {
+                    if (ImGui.MenuItem("Pet"))
+                    {
+                        Plugin.PetViewer(viewer);
+                    }
+                }
+
                 if (Plugin.Configuration.AdventurePlateOption && viewer.cid != 0)
                 {
                     if (ImGui.MenuItem("View Adventure Plate"))
