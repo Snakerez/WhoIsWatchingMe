@@ -18,8 +18,8 @@
   "IsTestingExclusive": false,
   "DownloadCount": 1,
   "LastUpdate": 1733436251,
-  "DownloadLinkInstall": "https://github.com/Snakerez/WhoIsWatchingMe/tree/main/WhoIsWatchingMe/releases/release.zip",
-  "DownloadLinkUpdate": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/refs/heads/main/WhoIsWatchingMe/releases/update.zip",,
+  "DownloadLinkInstall": "https://github.com/Snakerez/WhoIsWatchingMe/raw/refs/heads/main/WhoIsWatchingMe/releases/release.zip",
+  "DownloadLinkUpdate": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/refs/heads/main/WhoIsWatchingMe/releases/update.zip",
   "DownloadLinkTesting": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/refs/heads/main/WhoIsWatchingMe/releases/testing.zip",
   "IconUrl": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/refs/heads/main/WhoIsWatchingMe/assets/pipipopo.png"
 }
