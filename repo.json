@@ -4,11 +4,11 @@
     "Name": "WhoIsWatchingMe",
     "InternalName": "WhoIsWatchingMe",
     "AssemblyVersion": "1.5.0.0",
+    "Version": "1.5.0.0",
     "Description": "Tracks who is targeting you.",
     "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
     "ApplicableVersion": "any",
     "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/releas1.zip",
-    "IconUrl": "YOUR_ICON_URL_HERE",
     "Punchline": "Stop staring at me!"
   }
 ]
