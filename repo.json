@@ -1,14 +1,13 @@
-{
-  "Author": "ThaMimi",
-  "Name": "Who Is Watching ME",
-  "Punchline": "Hello there.",
-  "Description": "A improved with QOL version of Peeping Tom",
-  "InternalName": "WhoIsWatchingMe",
-  "AssemblyVersion": "1.5.0.0",
-  "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
-  "ApplicableVersion": "any",
-  "DalamudApiLevel": 15,
-  "IsHide": false,
-  "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/raw/refs/heads/main/release1.zip",
-  "IconUrl": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/pipipopo.png"
-}
+[
+  {
+    "Author": "Snakerez",
+    "Name": "WhoIsWatchingMe",
+    "InternalName": "WhoIsWatchingMe",
+    "Description": "Tracks who is targeting you.",
+    "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
+    "ApplicableVersion": "any",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/releas1.zip",
+    "IconUrl": "YOUR_ICON_URL_HERE",
+    "Punchline": "Stop staring at me!"
+  }
+]
