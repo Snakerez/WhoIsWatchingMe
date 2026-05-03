@@ -8,7 +8,7 @@
     "Description": "Tracks who is targeting you.",
     "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
     "ApplicableVersion": "any",
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/raw/refs/heads/main/WhoIsWatchingMe/releases/update.zip",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/tree/main/WhoIsWatchingMe/releases/update.zip",
     "Punchline": "Stop staring at me!"
   }
 ]
