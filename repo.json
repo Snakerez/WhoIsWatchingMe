@@ -3,6 +3,7 @@
     "Author": "Snakerez",
     "Name": "WhoIsWatchingMe",
     "InternalName": "WhoIsWatchingMe",
+    "AssemblyVersion": "1.5.0.0",
     "Description": "Tracks who is targeting you.",
     "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
     "ApplicableVersion": "any",
