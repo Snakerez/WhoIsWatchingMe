@@ -13,7 +13,5 @@
   "ApplicableVersion": "any",
   "DalamudApiLevel": 15,
   "IsHide": false,
-  "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/WhoIsWatchingMe/releases/release.zip",
-  "DownloadLinkUpdate": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/WhoIsWatchingMe/releases/release.zip",
-  "DownloadLinkTesting": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/WhoIsWatchingMe/releases/release.zip"
+  "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/WhoIsWatchingMe/releases/release.zip"
 }
