@@ -8,6 +8,7 @@
   "RepoUrl": "https://github.com/Snakerez/WhoIsWatchingMe",
   "ApplicableVersion": "any",
   "DalamudApiLevel": 15,
-  "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/release.zip"
+  "IsHide": false,
+  "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/release.zip",
   "IconUrl": "https://raw.githubusercontent.com/Snakerez/WhoIsWatchingMe/main/pipipopo.png"
 }
