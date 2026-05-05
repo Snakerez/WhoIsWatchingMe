@@ -24,22 +24,21 @@
     "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/DontKillMyKupo/main/DontKillKupo.zip"
   },
   {
-    "Author": "ThaMimi",
+"Author": "ThaMimi",
     "Name": "MimiBurnsYourHouseDown",
     "InternalName": "BDTHPlugin",
     "AssemblyVersion": "1.7.4.1",
     "Description": "Mimi's custom housing tool. Use /mimi to begin.",
     "ApplicableVersion": "any",
-    "RepoUrl": "https://github.com/Snakerez/DontKillMyKupo",
+    "RepoUrl": "https://github.com/Snakerez/MBYHD",
     "DownloadLinkInstall": "https://github.com/Snakerez/MBYHD/releases/download/v1.7.4.1/BDTHPlugin.zip",
     "DownloadLinkUpdate": "https://github.com/Snakerez/MBYHD/releases/download/v1.7.4.1/BDTHPlugin.zip",
     "DownloadLinkTesting": "https://github.com/Snakerez/MBYHD/releases/download/v1.7.4.1/BDTHPlugin.zip",
     "DalamudApiLevel": 15,
-    "IconUrl": "https://raw.githubusercontent.com/Snakerez/MimiHousingTool/main/icon.png",
     "Tags": [
-        "housing",
-        "placement",
-        "mimi"
+      "housing",
+      "placement",
+      "mimi"
     ]
 }
 ]
