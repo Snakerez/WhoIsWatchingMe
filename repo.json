@@ -24,8 +24,8 @@
     "DownloadLinkInstall": "https://raw.githubusercontent.com/Snakerez/DontKillMyKupo/main/DontKillKupo.zip"
   },
   {
-    "Author": "Mimi",
-    "Name": "BDTHPlugin",
+    "Author": "ThaMimi",
+    "Name": "MimiBurnsYourHouseDown",
     "InternalName": "BDTHPlugin",
     "AssemblyVersion": "1.7.4.1",
     "Description": "Mimi's custom housing tool. Use /mimi to begin.",
