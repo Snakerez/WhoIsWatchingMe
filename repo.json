@@ -34,7 +34,7 @@
     "DownloadLinkInstall": "https://github.com/Snakerez/MBYHD/releases/download/v1.7.4.1/BDTHPlugin.zip",
     "DownloadLinkUpdate": "https://github.com/Snakerez/MBYHD/releases/download/v1.7.4.1/BDTHPlugin.zip",
     "DownloadLinkTesting": "https://github.com/Snakerez/MBYHD/releases/download/v1.7.4.1/BDTHPlugin.zip",
-    "DalamudApiLevel": 10,
+    "DalamudApiLevel": 15,
     "IconUrl": "https://raw.githubusercontent.com/Snakerez/MimiHousingTool/main/icon.png",
     "Tags": [
         "housing",
