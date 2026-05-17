@@ -24,6 +24,18 @@
   },
   {
     "Author": "ThaMimi",
+    "Name": "Market Sniper",
+    "InternalName": "MarketSniper",
+    "AssemblyVersion": "1.0.0.0",
+    "Description": "Automated regional marketboard arbitrage scanner.",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "RepoUrl": "https://github.com/Snakerez/MarketSniper",
+    "DownloadLinkInstall": "https://github.com/Snakerez/MarketSniper/releases/download/1.0.0.0/latest.zip",
+    "IsHide": false
+  },
+  {
+    "Author": "ThaMimi",
     "Name": "MimiBurnsYourHouseDown",
     "InternalName": "BDTHPlugin",
     "AssemblyVersion": "1.7.4.1",
